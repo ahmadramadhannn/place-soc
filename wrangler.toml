@@ -1,0 +1,6 @@
+name = "place-ahmadramadhan"
+compatibility_date = "2025-12-31"
+compatibility_flags = ["nodejs_compat"]
+main = "@tanstack/react-start/server-entry"
+[observability]
+enabled = true
