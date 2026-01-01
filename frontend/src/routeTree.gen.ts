@@ -9,8 +9,6 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as UsersRouteImport } from './routes/users'
-import { Route as RedirectRouteImport } from './routes/redirect'
 import { Route as PlaygroundRouteImport } from './routes/playground'
 import { Route as LabRouteImport } from './routes/lab'
 import { Route as DeferredRouteImport } from './routes/deferred'
@@ -20,16 +18,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ApiUsersRouteImport } from './routes/api/users'
 import { Route as ApiUsersUserIdRouteImport } from './routes/api/users.$userId'
 
-const UsersRoute = UsersRouteImport.update({
-  id: '/users',
-  path: '/users',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RedirectRoute = RedirectRouteImport.update({
-  id: '/redirect',
-  path: '/redirect',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const PlaygroundRoute = PlaygroundRouteImport.update({
   id: '/playground',
   path: '/playground',
@@ -78,8 +66,6 @@ export interface FileRoutesByFullPath {
   '/deferred': typeof DeferredRoute
   '/lab': typeof LabRoute
   '/playground': typeof PlaygroundRoute
-  '/redirect': typeof RedirectRoute
-  '/users': typeof UsersRoute
   '/api/users': typeof ApiUsersRouteWithChildren
   '/api/users/$userId': typeof ApiUsersUserIdRoute
 }
@@ -90,8 +76,6 @@ export interface FileRoutesByTo {
   '/deferred': typeof DeferredRoute
   '/lab': typeof LabRoute
   '/playground': typeof PlaygroundRoute
-  '/redirect': typeof RedirectRoute
-  '/users': typeof UsersRoute
   '/api/users': typeof ApiUsersRouteWithChildren
   '/api/users/$userId': typeof ApiUsersUserIdRoute
 }
@@ -103,8 +87,6 @@ export interface FileRoutesById {
   '/deferred': typeof DeferredRoute
   '/lab': typeof LabRoute
   '/playground': typeof PlaygroundRoute
-  '/redirect': typeof RedirectRoute
-  '/users': typeof UsersRoute
   '/api/users': typeof ApiUsersRouteWithChildren
   '/api/users/$userId': typeof ApiUsersUserIdRoute
 }
@@ -117,8 +99,6 @@ export interface FileRouteTypes {
     | '/deferred'
     | '/lab'
     | '/playground'
-    | '/redirect'
-    | '/users'
     | '/api/users'
     | '/api/users/$userId'
   fileRoutesByTo: FileRoutesByTo
@@ -129,8 +109,6 @@ export interface FileRouteTypes {
     | '/deferred'
     | '/lab'
     | '/playground'
-    | '/redirect'
-    | '/users'
     | '/api/users'
     | '/api/users/$userId'
   id:
@@ -141,8 +119,6 @@ export interface FileRouteTypes {
     | '/deferred'
     | '/lab'
     | '/playground'
-    | '/redirect'
-    | '/users'
     | '/api/users'
     | '/api/users/$userId'
   fileRoutesById: FileRoutesById
@@ -154,27 +130,11 @@ export interface RootRouteChildren {
   DeferredRoute: typeof DeferredRoute
   LabRoute: typeof LabRoute
   PlaygroundRoute: typeof PlaygroundRoute
-  RedirectRoute: typeof RedirectRoute
-  UsersRoute: typeof UsersRoute
   ApiUsersRoute: typeof ApiUsersRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/users': {
-      id: '/users'
-      path: '/users'
-      fullPath: '/users'
-      preLoaderRoute: typeof UsersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/redirect': {
-      id: '/redirect'
-      path: '/redirect'
-      fullPath: '/redirect'
-      preLoaderRoute: typeof RedirectRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/playground': {
       id: '/playground'
       path: '/playground'
@@ -253,8 +213,6 @@ const rootRouteChildren: RootRouteChildren = {
   DeferredRoute: DeferredRoute,
   LabRoute: LabRoute,
   PlaygroundRoute: PlaygroundRoute,
-  RedirectRoute: RedirectRoute,
-  UsersRoute: UsersRoute,
   ApiUsersRoute: ApiUsersRouteWithChildren,
 }
 export const routeTree = rootRouteImport
