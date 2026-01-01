@@ -24,7 +24,7 @@ export const Route = createRootRoute({
       },
       ...seo({
         title:
-          'TanStack Start | Type-Safe, Client-First, Full-Stack React Framework',
+          'place',
         description: `TanStack Start is a type-safe, client-first, full-stack React framework. `,
       }),
     ],
@@ -80,30 +80,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             Home
           </Link>{' '}
           <Link
-            to="/posts"
-            activeProps={{
-              className: 'font-bold',
-            }}
-          >
-            Posts
-          </Link>{' '}
-          <Link
-            to="/users"
-            activeProps={{
-              className: 'font-bold',
-            }}
-          >
-            Users
-          </Link>{' '}
-          <Link
-            to="/route-a"
-            activeProps={{
-              className: 'font-bold',
-            }}
-          >
-            Pathless Layout
-          </Link>{' '}
-          <Link
             to="/deferred"
             activeProps={{
               className: 'font-bold',
@@ -112,13 +88,25 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             Deferred
           </Link>{' '}
           <Link
-            // @ts-expect-error
-            to="/this-route-does-not-exist"
             activeProps={{
-              className: 'font-bold',
+              className: "font-bold"
+            }}
+            to="/about"
+          >
+            About
+          </Link>
+          <Link
+            to="/lab"
+            activeProps={{
+              className: "font-bold"
             }}
           >
-            This Route Does Not Exist
+            Lab
+          </Link>
+          <Link to="/playground" activeProps={{
+            className: "font-bold"
+          }}>
+            Playground
           </Link>
         </div>
         <hr />
